@@ -6,7 +6,7 @@ interface CategoryProps {
 }
 const Category = ({ imageUrl, name }: CategoryProps) => {
   return (
-    <div className="flex flex-col items-center gap-y-4 cursor-pointer group">
+    <div className="flex flex-col items-center gap-y-2 md:gap-y-4 cursor-pointer group">
       <div className="w-28 h-28 rounded-full relative border overflow-hidden">
         <Image alt="name" src="./next.svg" fill className="" />
       </div>
