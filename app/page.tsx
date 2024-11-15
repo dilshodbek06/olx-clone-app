@@ -1,3 +1,4 @@
+import Categories from "@/components/shared/categories";
 import Header from "@/components/shared/header";
 import SearchMenu from "@/components/shared/search-menu";
 
@@ -6,6 +7,7 @@ export default function HomePage() {
     <div className="min-h-screen">
       <Header />
       <SearchMenu />
+      <Categories />
     </div>
   );
 }

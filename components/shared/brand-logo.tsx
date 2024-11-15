@@ -2,9 +2,11 @@ import Image from "next/image";
 
 const BrandLogo = () => {
   return (
-    <div className="flex items-center gap-x-3 cursor-pointer">
+    <div className="flex items-center gap-x-2 sm:gap-x-3 cursor-pointer">
       <Image alt="logo" src="/logo.svg" width={40} height={60} priority />
-      <b className="text-white text-lg opacity-90 font-bold">ZD-OLX</b>
+      <b className="text-white text-base sm:text-lg opacity-90 font-bold">
+        ZD-OLX
+      </b>
     </div>
   );
 };
