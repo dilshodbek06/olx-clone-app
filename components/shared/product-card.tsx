@@ -1,6 +1,7 @@
 "use client";
 
 import { Heart } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface ProductCardProps {
   imageUrl: string;
@@ -26,27 +27,32 @@ const formatPrice = (price: number) =>
   );
 
 const ProductCard = () => {
+  const router = useRouter();
+
   return (
-    <div className="cursor-pointer mx-auto rounded-md min-h-[240px] md:min-h-[300px] max-w-[300px] border w-full group">
+    <div
+      onClick={() => router.push(`/detail/1`)}
+      className="cursor-pointer mx-auto rounded-md min-h-[240px] md:min-h-[300px] max-w-[300px] border w-full group"
+    >
       {/* header */}
       <div className="h-[150px] md:h-[220px] border-b bg-cover bg-center relative">
         {/* background image or img */}
-        <span className="absolute top-2 right-2 flex px-2 sm:px-3 py-[2px] md:py-1 text-[10px] sm:text-xs font-medium text-gray-200 animate-background-shine items-center justify-center rounded-full border bg-green-500">
+        <span className="absolute top-2 right-2 flex px-2 sm:px-3 py-[2px] md:py-1 text-[10px] sm:text-xs font-medium text-gray-200 animate-background-shine items-center justify-center rounded-full border bg-violet-600">
           NEW
         </span>
       </div>
       {/* body */}
       <div className=" p-2 md:p-3 bg-slate-600">
         <div className="flex items-center justify-between">
-          <h5 className="text-white line-clamp-1 font-bold group-hover:underline underline-offset-[3px] transition-all">
+          <p className="text-white line-clamp-1 font-bold group-hover:underline underline-offset-[3px] transition-all">
             Lorem ipsum dolor sit amet consectetur.
-          </h5>
+          </p>
           <div>
             <Heart className="size-6 text-white cursor-pointer hover:scale-105 transition" />
           </div>
         </div>
         <div className="mt-2">
-          <h4 className="text-white text-sm sm:text-base">120 000 UZS</h4>
+          <p className="text-white text-sm sm:text-base">120 000 UZS</p>
 
           <p className="text-gray-300 text-sm mt-3 sm:mt-4">Ташкент</p>
 

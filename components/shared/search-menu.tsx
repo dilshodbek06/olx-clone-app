@@ -41,6 +41,8 @@ const SearchMenu = () => {
           <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
               <Button
+                aria-label="button"
+                name="combobox"
                 variant="outline"
                 role="combobox"
                 aria-expanded={open}

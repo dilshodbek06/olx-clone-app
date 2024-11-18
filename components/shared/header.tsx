@@ -39,8 +39,8 @@ const Header = () => (
         <NavigationMenu className="transition-all duration-300 animate-in">
           <NavigationMenuList>
             <NavigationMenuItem className="hover:bg-slate-800">
-              <NavigationMenuTrigger className="bg-transparent text-white hover:bg-transparent flex items-center gap-x-2">
-                <User /> <span>Account</span>
+              <NavigationMenuTrigger className="bg-transparent text-white hover:bg-transparent focus:bg-transparent flex items-center gap-x-2">
+                <User /> <span className="focus:text-gray-200">Account</span>
               </NavigationMenuTrigger>
               <NavigationMenuContent className="w-full min-w-[8.6rem] bg-slate-700 text-white">
                 <NavigationMenuLink>

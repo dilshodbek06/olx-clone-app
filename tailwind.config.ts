@@ -61,9 +61,23 @@ export default {
           from: { backgroundPosition: "200% 0" },
           to: { backgroundPosition: "-200% 0" },
         },
+        "background-shine": {
+          from: {
+            backgroundPosition: "0 0",
+          },
+          to: {
+            backgroundPosition: "-200% 0",
+          },
+        },
+        marquee: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(-200%)" },
+        },
       },
       animation: {
         shine: "shine 8s ease-in-out infinite",
+        "background-shine": "background-shine 4s linear infinite",
+        marquee: "marquee 20s linear infinite",
       },
     },
   },
