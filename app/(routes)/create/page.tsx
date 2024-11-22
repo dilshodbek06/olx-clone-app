@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
 import ContactForm from "./_components/contact-form";
 import DescriptionForm from "./_components/description-form";
 import ImagesForm from "./_components/images-form";
 import LocationForm from "./_components/location-form";
 import MainForm from "./_components/main-form";
+import SaveForm from "./_components/modal/save-form";
 
 const CreatePage = () => {
   return (
@@ -33,9 +33,7 @@ const CreatePage = () => {
           <ContactForm />
         </div>
         <div className="mt-3 rounded-sm bg-slate-600 min-h-[80px] py-5 px-3 md:px-5 flex justify-end">
-          <Button className="bg-slate-700 hover:bg-slate-500 w-full md:w-auto md:px-8 md:py-6  md:text-lg text-base">
-            Save data
-          </Button>
+          <SaveForm />
         </div>
       </div>
     </div>

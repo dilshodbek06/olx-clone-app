@@ -16,12 +16,16 @@ import {
 } from "@/components/ui/popover";
 import { locations } from "@/helpers/dummy-data";
 import { cn } from "@/lib/utils";
+import useAdStore from "@/store/use-ad-store";
 import { Check, MapPin } from "lucide-react";
 import { useState } from "react";
 
 const LocationForm = () => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
+
+  const {  setLocation } = useAdStore();
+
 
   return (
     <div>
@@ -68,6 +72,7 @@ const LocationForm = () => {
                         onSelect={(currentValue) => {
                           setValue(currentValue === value ? "" : currentValue);
                           setOpen(false);
+                          setLocation(currentValue);
                         }}
                       >
                         {location.label}

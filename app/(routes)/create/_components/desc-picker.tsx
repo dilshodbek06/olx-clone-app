@@ -2,9 +2,12 @@
 
 import React, { useState } from "react";
 import Tiptap from "./tiptap";
+import useAdStore from "@/store/use-ad-store";
 
 const DescPicker = () => {
   const [content, setContent] = useState<string>("");
+
+  const { setDescription } = useAdStore();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleContentChange = (reason: any) => {
@@ -14,8 +17,7 @@ const DescPicker = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSubmit = (e: any) => {
     e.preventDefault();
-
-    console.log(content);
+    setDescription(content);
   };
   return (
     <form onSubmit={handleSubmit}>

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Drawer } from "vaul";
 import CategoryItem from "../category-item";
 import { categories } from "@/helpers/dummy-data";
+import useAdStore from "@/store/use-ad-store";
 
 interface CategoryModalProps {
   open: boolean;
@@ -15,6 +16,8 @@ const CategoryModal = ({
   open,
   setIsOpen,
 }: CategoryModalProps) => {
+  const { category, setCategory } = useAdStore();
+
   return (
     <div>
       <Drawer.Root open={open} onOpenChange={setIsOpen}>
@@ -33,7 +36,7 @@ const CategoryModal = ({
               {/* Forms */}
               <div className="overflow-y-auto scrollbar-thin max-h-[20rem]">
                 <h2 className="font-bold text-center md:text-xl">
-                  Select category
+                  {category ? category + " ✔" : "Select category"}
                 </h2>
                 <div className="min-h-[120px] mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 overflow-y-auto">
                   {categories.map((category, ind) => (
@@ -41,6 +44,8 @@ const CategoryModal = ({
                       key={ind}
                       imageUrl={category.imageUrl}
                       name={category.name}
+                      handle={setCategory}
+                      close={() => handleClose()}
                     />
                   ))}
                 </div>
@@ -55,7 +60,6 @@ const CategoryModal = ({
                 >
                   Cancel
                 </Button>
-                <Button className="md:px-6">Save</Button>
               </div>
             </div>
           </Drawer.Content>
