@@ -17,7 +17,7 @@ const MainForm = () => {
         <Input
           className="rounded-sm py-6 text-xl text-white mt-1 placeholder:text-lg max-w-[53rem]"
           id="title"
-          placeholder="enter the title..."
+          placeholder="e.g iPhone 13 pro..."
         />
       </div>
       <div className="mt-4">

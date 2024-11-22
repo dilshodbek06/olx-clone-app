@@ -1,7 +1,8 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Circle } from "lucide-react";
 import { Drawer } from "vaul";
+import CategoryItem from "../category-item";
+import { categories } from "@/helpers/dummy-data";
 
 interface CategoryModalProps {
   open: boolean;
@@ -27,10 +28,23 @@ const CategoryModal = ({
               {/* Handle Drawer */}
               <div
                 aria-hidden
-                className="mx-auto w-12 h-1.5 rounded-full bg-gray-300 mb-8"
+                className="mx-auto w-12 h-1.5 rounded-full bg-gray-300 mb-6"
               />
               {/* Forms */}
-              <div className="overflow-y-auto scrollbar-thin max-h-[20rem]"></div>
+              <div className="overflow-y-auto scrollbar-thin max-h-[20rem]">
+                <h2 className="font-bold text-center md:text-xl">
+                  Select category
+                </h2>
+                <div className="min-h-[120px] mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 overflow-y-auto">
+                  {categories.map((category, ind) => (
+                    <CategoryItem
+                      key={ind}
+                      imageUrl={category.imageUrl}
+                      name={category.name}
+                    />
+                  ))}
+                </div>
+              </div>
 
               {/* Buttons */}
               <div className="flex justify-end sm:justify-center gap-x-4 mt-4">
@@ -41,9 +55,7 @@ const CategoryModal = ({
                 >
                   Cancel
                 </Button>
-                <Button className="md:px-6">
-                  {true && <Circle className="size-4 -mt-[0.6px] mr-1" />} Save
-                </Button>
+                <Button className="md:px-6">Save</Button>
               </div>
             </div>
           </Drawer.Content>
