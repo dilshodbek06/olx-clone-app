@@ -8,14 +8,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { getImage } from "@/helpers";
 
 interface ImageCarouselProps {
   images: string[];
 }
 
 const ImageCarousel = ({ images }: ImageCarouselProps) => {
-  console.log(images);
-
   return (
     <div className="h-[300px]">
       <Carousel
@@ -25,36 +24,18 @@ const ImageCarousel = ({ images }: ImageCarouselProps) => {
         className="h-full"
       >
         <CarouselContent className="h-full">
-          <CarouselItem>
-            <div className="h-[300px] relative">
-              <Image
-                alt={"alt"}
-                src={"/logo.svg"}
-                fill
-                className="object-center"
-              />
-            </div>
-          </CarouselItem>
-          <CarouselItem>
-            <div className="h-[300px] relative">
-              <Image
-                alt={"alt"}
-                src={"/logo.svg"}
-                fill
-                className="object-center"
-              />
-            </div>
-          </CarouselItem>
-          <CarouselItem>
-            <div className="h-[300px] relative">
-              <Image
-                alt={"alt"}
-                src={"/logo.svg"}
-                fill
-                className="object-center"
-              />
-            </div>
-          </CarouselItem>
+          {images.map((item, ind) => (
+            <CarouselItem key={ind}>
+              <div className="h-[300px] relative max-w-[24rem] mx-auto">
+                <Image
+                  alt={"alt"}
+                  src={getImage(item)}
+                  fill
+                  className="object-center"
+                />
+              </div>
+            </CarouselItem>
+          ))}
         </CarouselContent>
         <CarouselPrevious className="-left-0 bg-slate-700 text-white" />
         <CarouselNext className="-right-0 bg-slate-700 text-white" />

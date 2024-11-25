@@ -1,26 +1,19 @@
 import { Flag } from "lucide-react";
 
-const DescriptionCard = () => {
+interface DescriptionCardProps {
+  description: string;
+}
+
+const DescriptionCard = ({ description }: DescriptionCardProps) => {
   return (
     <div>
       <h1 className=" text-base md:text-2xl text-white font-bold">
         Description
       </h1>
-      <p className="mt-2 text-gray-100">
-        Услуги электрика. Опыт 20 лет. Оперативный выезд 24/7. ГАРАНТИЯ.
-        Недорого. 935860014 <br /> <br /> Делаю всё, от замены розетки до
-        электрики под ключ. По необходимости имеется бригада мастеров, все с
-        большим опытом.
-      </p>
-      <br />
-      <p className="text-gray-100">
-        Сифатли плетёный пластик стол ва стуллар сотилади, хар хил рангларда. -
-        Замонавий ва чиройли дизайн; - Стол ва стуллар чидамли, бемалол 200 кг.
-        гача кутаради. - Ойнасиз стол стуллар билан нархи 2 050 000 сум. -
-        Вилоятлар учун заказ берилганда Тошкентдаги Вилоятларга катновчи юк
-        машиналари питагигача олиб бориб берилади. Тел: +998 97 433 82 00, +998
-        90 049 00 55
-      </p>
+      <div
+        dangerouslySetInnerHTML={{ __html: description }}
+        className="mt-2 text-gray-100"
+      />
       <hr className="mt-7" />
       <div className="mt-6 flex items-center justify-between">
         <p className="text-white text-xs">ID: 54780224</p>

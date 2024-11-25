@@ -9,6 +9,7 @@ interface AdState {
   personName: string;
   email: string;
   phoneNumber: string;
+  price: string;
   setTitle: (title: string) => void;
   setCategory: (category: string) => void;
   setImages: (images: string[]) => void;
@@ -17,6 +18,7 @@ interface AdState {
   setPersonName: (name: string) => void;
   setEmail: (email: string) => void;
   setPhoneNumber: (phone: string) => void;
+  setPrice: (price: string) => void;
   reset: () => void;
 }
 
@@ -29,6 +31,7 @@ const useAdStore = create<AdState>((set) => ({
   personName: "",
   email: "",
   phoneNumber: "",
+  price: "",
 
   setTitle: (title) => set(() => ({ title: title })),
   setCategory: (category) => set(() => ({ category: category })),
@@ -38,6 +41,7 @@ const useAdStore = create<AdState>((set) => ({
   setPersonName: (name) => set(() => ({ personName: name })),
   setEmail: (email) => set(() => ({ email: email })),
   setPhoneNumber: (phone) => set(() => ({ phoneNumber: phone })),
+  setPrice: (price) => set(() => ({ price: price })),
   reset: () =>
     set(() => ({
       title: "",

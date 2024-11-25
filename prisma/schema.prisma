@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Category {
+  ANIMALS
+  TRANSPORTS
+  CHILDREN
+  FASHION
+  HOME
+  HOBBY
+  ESTATE
+  ELECTRONICS
+  SERVICES
+  WORKS
+}
+
+enum Location {
+  ANDIJON
+  BUXORO
+  FARGONA
+  JIZZAX
+  XORAZM
+  NAMANGAN
+  NAVOIY
+  QASHQADARYO
+  QORAQALPOGISTON
+  SAMARQAND
+  SIRDARYO
+  SURXONDARYO
+  TOSHKENT
+}
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  password     String
+  profileImage String?
+  ads          Ad[]
+  createdAt    DateTime @default(now())
+}
+
+model Ad {
+  id          String   @id @default(uuid())
+  title       String
+  category    Category
+  images      String[]
+  description String
+  location    Location
+  personName  String
+  email       String
+  phoneNumber String
+  price       Int
+
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+}

@@ -1,18 +1,25 @@
+"use client";
+
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface CategoryProps {
   imageUrl: string;
   name: string;
+  value: string;
 }
-const Category = ({ imageUrl, name }: CategoryProps) => {
+const Category = ({ imageUrl, name, value }: CategoryProps) => {
+  const router = useRouter();
+
   return (
-    <div className="flex flex-col items-center gap-y-2 md:gap-y-4 cursor-pointer group">
-      <div className="w-28 h-28 rounded-full relative border overflow-hidden">
-        <Image alt="name" src="./next.svg" fill className="" />
+    <div
+      onClick={() => router.push(`/ads?category=${value}`)}
+      className="p-3 cursor-pointer rounded-md border flex items-center gap-x-2 hover:bg-slate-700 "
+    >
+      <div className="p-2 rounded-full relative border w-[40px] h-[40px]">
+        <Image alt="logo" src={imageUrl} fill className="bg-center" />
       </div>
-      <b className="max-w-[120px] text-white text-lg md:text-xl group-hover:text-gray-300 text-wrap truncate text-center line-clamp-3">
-        Xobbi, dam olish, sport
-      </b>
+      <p className="text-sm md:text-lg font-bold text-white">{name}</p>
     </div>
   );
 };

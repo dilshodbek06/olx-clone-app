@@ -44,6 +44,7 @@ const CategoryModal = ({
                       key={ind}
                       imageUrl={category.imageUrl}
                       name={category.name}
+                      value={category.value}
                       handle={setCategory}
                       close={() => handleClose()}
                     />

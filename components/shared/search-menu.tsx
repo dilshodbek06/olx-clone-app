@@ -21,10 +21,31 @@ import {
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { locations } from "../../helpers/dummy-data";
+import { useRouter } from "next/navigation";
 
 const SearchMenu = () => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
+  const [name, setName] = useState("");
+
+  const router = useRouter();
+
+  const handleSearch = () => {
+    if (name === "" && value === "") {
+      return;
+    }
+    const queryParams = new URLSearchParams();
+
+    if (value) {
+      queryParams.append("location", value);
+    }
+    if (name) {
+      queryParams.append("name", name);
+    }
+
+    router.push(`/ads?${queryParams.toString()}`);
+  };
+
   return (
     <div className="flex items-center py-16">
       <div className="container px-3 w-full max-w-6xl flex flex-col gap-2 md:gap-0  md:flex-row items-center mx-auto h-16">
@@ -32,6 +53,8 @@ const SearchMenu = () => {
         <div className="h-full min-h-[60px] md:min-h-0 w-full md:w-2/3 relative">
           <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white size-6" />
           <Input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             className="h-full w-full pl-12 placeholder-white text-white focus-visible:ring-0 rounded-none text-base md:text-xl focus-visible:border-b-2  border-t-0 border-l-0 border-r-0 border-b-0  bg-slate-600"
             placeholder="What are you looking for..."
           />
@@ -94,7 +117,10 @@ const SearchMenu = () => {
             </PopoverContent>
           </Popover>
         </div>
-        <Button className="h-full p-4 text-lg rounded-none flex items-center w-full md:w-auto">
+        <Button
+          onClick={handleSearch}
+          className="h-full p-4 text-lg rounded-none flex items-center w-full md:w-auto"
+        >
           Search <Search className="ml-3 size-5" />
         </Button>
       </div>

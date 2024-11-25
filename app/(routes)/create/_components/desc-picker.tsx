@@ -12,6 +12,7 @@ const DescPicker = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleContentChange = (reason: any) => {
     setContent(reason);
+    setDescription(content);
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

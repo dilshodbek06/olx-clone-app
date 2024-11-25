@@ -17,7 +17,7 @@ type Props = {
   content: string;
 };
 
-const Toolbar = ({ editor, content }: Props) => {
+const Toolbar = ({ editor }: Props) => {
   if (!editor) {
     return null;
   }
@@ -119,14 +119,14 @@ const Toolbar = ({ editor, content }: Props) => {
           <Code className="w-5 h-5" />
         </button>
       </div>
-      {content && (
+      {/* {content && (
         <button
           type="submit"
           className="px-4 bg-violet-600 text-white py-2 rounded-md"
         >
           Save
         </button>
-      )}
+      )} */}
     </div>
   );
 };

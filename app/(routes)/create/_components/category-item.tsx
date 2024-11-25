@@ -5,14 +5,21 @@ import Image from "next/image";
 interface CategoryItemProps {
   name: string;
   imageUrl: string;
+  value: string;
   handle: (name: string) => void;
   close: () => void;
 }
-const CategoryItem = ({ name, imageUrl, handle, close }: CategoryItemProps) => {
+const CategoryItem = ({
+  value,
+  name,
+  imageUrl,
+  handle,
+  close,
+}: CategoryItemProps) => {
   return (
     <div
       onClick={() => {
-        handle(name);
+        handle(value);
         close();
       }}
       className="p-3 cursor-pointer rounded-md border flex items-center gap-x-2 hover:bg-gray-100"

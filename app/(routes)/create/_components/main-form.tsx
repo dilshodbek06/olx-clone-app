@@ -8,7 +8,7 @@ import useAdStore from "@/store/use-ad-store";
 
 const MainForm = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { title, setTitle, category } = useAdStore();
+  const { title, setTitle, category, price, setPrice } = useAdStore();
 
   return (
     <div>
@@ -23,6 +23,18 @@ const MainForm = () => {
           placeholder="e.g iPhone 13 pro..."
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
+      <div className="mt-3">
+        <label htmlFor="price" className="text-white">
+          Enter your price *
+        </label>
+        <Input
+          className="rounded-sm py-6 text-xl text-white mt-1 placeholder:text-lg max-w-[53rem]"
+          id="price"
+          placeholder="e.g 34000..."
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
         />
       </div>
       <div className="mt-4">
