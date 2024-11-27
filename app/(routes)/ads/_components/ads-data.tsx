@@ -1,9 +1,13 @@
 import EmptyState from "@/components/shared/empty-state";
 import ProductCard from "@/components/shared/product-card";
-import { Ad } from "@prisma/client";
+import { Ad, Favorite } from "@prisma/client";
+
+interface ExtendedAd extends Ad {
+  favorites: Favorite[];
+}
 
 interface AdsDataProps {
-  items: Ad[];
+  items: ExtendedAd[];
 }
 
 const AdsData = ({ items = [] }: AdsDataProps) => {
@@ -27,6 +31,9 @@ const AdsData = ({ items = [] }: AdsDataProps) => {
                 name={item.title}
                 price={item.price}
                 isNew
+                isLiked={
+                  item?.favorites && item?.favorites[0]?.adId === item.id
+                }
                 key={item.id}
                 id={item.id}
               />

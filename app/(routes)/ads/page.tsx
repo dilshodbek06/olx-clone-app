@@ -27,6 +27,9 @@ const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
           }
         : {}),
     },
+    include: {
+      favorites: true,
+    },
   });
 
   return (
