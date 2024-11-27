@@ -9,7 +9,9 @@ const LocationCard = () => {
           <MapPin className="size-5 text-white" />
           <p className="text-white font-semibold text-sm">Bukhara</p>
         </div>
-        <div className="min-h-[140px] border rounded w-full"></div>
+        <div className="min-h-[140px] border rounded w-full flex items-center justify-center text-gray-300">
+          Soon
+        </div>
       </div>
     </div>
   );

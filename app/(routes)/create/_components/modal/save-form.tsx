@@ -19,6 +19,7 @@ const SaveForm = () => {
     personName,
     phoneNumber,
     price,
+    reset,
   } = useAdStore();
 
   const [loading, setLoading] = useState(false);
@@ -42,6 +43,7 @@ const SaveForm = () => {
       toast.success("Created success.");
       router.refresh();
       router.push("/");
+      reset();
     } catch (error) {
       toast.error("Something went wrong.");
       console.log(error);

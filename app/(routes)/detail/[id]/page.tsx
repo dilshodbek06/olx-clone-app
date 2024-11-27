@@ -15,6 +15,7 @@ const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
     },
     include: {
       favorites: true,
+      User: true,
     },
   });
 
@@ -39,6 +40,7 @@ const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
               createdAt={currentAd.createdAt}
               personName={currentAd.personName}
               phoneNumber={currentAd.phoneNumber}
+              imageUrl={currentAd.User?.profileImage || ""}
             />
           </div>
         </div>

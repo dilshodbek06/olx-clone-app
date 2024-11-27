@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { formatDate } from "@/helpers";
+import { formatDate, getImage } from "@/helpers";
 import { Phone } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -27,6 +27,7 @@ const ContactCard = ({
     // Open the SMS URI
     window.location.href = smsUrl;
   };
+
   return (
     <div className="flex flex-col gap-y-5 md:flex-row items-center justify-between">
       {/* left */}
@@ -37,7 +38,7 @@ const ContactCard = ({
             <Image
               loading="lazy"
               alt="user"
-              src={imageUrl ?? "/logo.svg"}
+              src={imageUrl ? getImage(imageUrl) : "/logo.svg"}
               fill
               className="bg-center"
             />
