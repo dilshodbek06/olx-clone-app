@@ -9,7 +9,7 @@ interface ProductsPageProps {
 }
 
 const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
-  const { name, category, location } = await searchParams;
+  const { name, category, location } = searchParams;
 
   const categoryEnum = category as keyof typeof Category | undefined;
   const locationEnum = location as keyof typeof Location | undefined;
