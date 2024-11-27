@@ -5,11 +5,11 @@ import Filters from "./_components/filters";
 import { Category, Location } from "@prisma/client";
 
 interface ProductsPageProps {
-  searchParams: { [key: string]: string | undefined };
+  searchParams: Promise<{ [key: string]: string | undefined }>;
 }
 
 const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
-  const { name, category, location } = searchParams;
+  const { name, category, location } = await searchParams;
 
   const categoryEnum = category as keyof typeof Category | undefined;
   const locationEnum = location as keyof typeof Location | undefined;
