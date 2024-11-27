@@ -22,6 +22,8 @@ const LoginPage = () => {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -30,10 +32,12 @@ const LoginPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const res = await login({
         email: formData.email,
         password: formData.password,
       });
+      setLoading(false);
       if (res.status == 404) {
         toast.error("Email not found!");
         return;
@@ -44,6 +48,8 @@ const LoginPage = () => {
       }
     } catch (error) {
       console.error("Registration error:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -90,7 +96,7 @@ const LoginPage = () => {
           </CardContent>
           <CardFooter className="flex justify-between">
             <Button type="submit" className="w-full">
-              Login
+              {loading ? "Loading..." : "Login"}
             </Button>
           </CardFooter>
         </form>

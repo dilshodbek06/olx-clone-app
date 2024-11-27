@@ -20,6 +20,13 @@ const ContactCard = ({
   createdAt,
 }: ContactCardProps) => {
   const [show, setShow] = useState(false);
+
+  const handleOpenMessageApp = () => {
+    // Construct the SMS URI
+    const smsUrl = `sms:${phoneNumber}`;
+    // Open the SMS URI
+    window.location.href = smsUrl;
+  };
   return (
     <div className="flex flex-col gap-y-5 md:flex-row items-center justify-between">
       {/* left */}
@@ -46,7 +53,9 @@ const ContactCard = ({
       </div>
       {/* right */}
       <div className="w-full md:w-[40%]">
-        <Button className="w-full text-lg">Message</Button>
+        <Button onClick={handleOpenMessageApp} className="w-full text-lg">
+          Message
+        </Button>
         <div className="mt-4 flex items-center justify-between">
           <div className="flex items-center gap-x-2">
             <Phone className="size-5 text-white" />

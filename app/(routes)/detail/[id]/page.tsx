@@ -13,6 +13,9 @@ const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
     where: {
       id,
     },
+    include: {
+      favorites: true,
+    },
   });
 
   if (!currentAd) {
@@ -43,9 +46,14 @@ const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
         <div className="w-full md:w-1/3">
           <div className="min-h-[100px] bg-slate-600 rounded-sm py-4 px-3">
             <PriceCard
+              phoneNumber={currentAd.phoneNumber}
               createdAt={currentAd.createdAt}
               name={currentAd.title}
               price={currentAd.price}
+              isLiked={
+                currentAd.favorites &&
+                currentAd?.favorites[0]?.adId === currentAd.id
+              }
             />
           </div>
           <div className="min-h-[100px] mt-3 bg-slate-600 rounded-sm py-2 px-3">

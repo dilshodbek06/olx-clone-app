@@ -22,7 +22,7 @@ const ProductsPage = async ({ searchParams }: ProductsPageProps) => {
         ? {
             title: {
               contains: name,
-              mode: "insensitive", // Case-insensitive search
+              mode: "insensitive",
             },
           }
         : {}),

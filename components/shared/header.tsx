@@ -8,6 +8,7 @@ import {
   LoaderCircle,
   LogOut,
   LucideIcon,
+  Plus,
   Settings,
   User,
 } from "lucide-react";
@@ -21,6 +22,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import useUser from "@/app/hooks/useUser";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface MenuItemProps {
   label: string;
@@ -36,6 +38,7 @@ const MenuItem = ({ label, icon: Icon }: MenuItemProps) => (
 
 const Header = () => {
   const { user, loading } = useUser();
+  const router = useRouter();
 
   // const handleLogOut = async () => {
   //   await deleteSession();
@@ -43,7 +46,7 @@ const Header = () => {
 
   return (
     <div className="min-h-[70px] shadow-sm bg-slate-800 flex items-center">
-      <div className="container px-3 mx-auto max-w-6xl flex items-center justify-between">
+      <div className="container px-3 mx-auto max-w-6xl flex items-center justify-between ">
         <BrandLogo />
         <div className="flex items-center gap-x-1 sm:gap-x-3">
           <NavigationMenu className="transition-all duration-300 animate-in">
@@ -55,8 +58,12 @@ const Header = () => {
                 <NavigationMenuContent className="w-full min-w-[8.6rem] bg-slate-700 text-white">
                   <NavigationMenuLink>
                     <div className="p-2 flex flex-col gap-y-2">
-                      <MenuItem label="E'lonlar" icon={CalendarPlus} />
-                      <MenuItem label="Sozlamalar" icon={Settings} />
+                      <div onClick={() => router.push("/profile/all")}>
+                        <MenuItem label="E'lonlar" icon={CalendarPlus} />
+                      </div>
+                      <div onClick={() => router.push("/profile/settings")}>
+                        <MenuItem label="Sozlamalar" icon={Settings} />
+                      </div>
                       <hr />
                       <div>
                         <MenuItem label="Log out" icon={LogOut} />
@@ -71,7 +78,9 @@ const Header = () => {
             <LoaderCircle className="size-5 text-white animate-spin" />
           ) : user ? (
             <Link href="/create">
-              <Button>Create new</Button>
+              <Button variant="expandIcon" Icon={Plus} iconPlacement="right">
+                Create new
+              </Button>
             </Link>
           ) : (
             <Link href="/sign-in">

@@ -44,6 +44,19 @@ model User {
   profileImage String?
   ads          Ad[]
   createdAt    DateTime @default(now())
+
+  favorites Favorite[]
+}
+
+model Favorite {
+  adId   String
+  ad     Ad     @relation(fields: [adId], references: [id])
+  User   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  createdAt DateTime @default(now())
+
+  @@id([adId, userId])
 }
 
 model Ad {
@@ -58,8 +71,9 @@ model Ad {
   phoneNumber String
   price       Int
 
-  updatedAt DateTime @updatedAt
-  createdAt DateTime @default(now())
-  User      User?    @relation(fields: [userId], references: [id])
+  updatedAt DateTime   @updatedAt
+  createdAt DateTime   @default(now())
+  User      User?      @relation(fields: [userId], references: [id])
   userId    String?
+  favorites Favorite[]
 }

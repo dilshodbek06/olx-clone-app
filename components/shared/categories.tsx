@@ -12,7 +12,7 @@ const Categories = () => {
           {categories.map((item, ind) => (
             <Category
               value={item.value}
-              imageUrl={item.imageUrl}
+              whiteIcon={item.whiteIcon}
               name={item.name}
               key={ind}
             />
