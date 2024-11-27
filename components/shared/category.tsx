@@ -16,7 +16,7 @@ const Category = ({ name, value, whiteIcon }: CategoryProps) => {
       onClick={() => router.push(`/ads?category=${value}`)}
       className="p-3 cursor-pointer rounded-md border flex items-center gap-x-2 hover:bg-slate-700 "
     >
-      <div className="p-2 rounded-full relative border border-gray-400 w-[40px] h-[40px]">
+      <div className="p-2 rounded-full relative border border-gray-400 min-w-[50px] min-h-[50px] flex justify-center items-center overflow-hidden">
         <Image alt="logo" src={whiteIcon} fill className="bg-center" />
       </div>
       <p className="text-sm md:text-lg font-bold text-white">{name}</p>

@@ -26,7 +26,7 @@ const ImageCarousel = ({ images }: ImageCarouselProps) => {
         <CarouselContent className="h-full">
           {images.map((item, ind) => (
             <CarouselItem key={ind}>
-              <div className="h-[300px] relative max-w-[22rem] mx-auto">
+              <div className="h-[300px] relative md:max-w-[22rem] mx-auto">
                 <Image
                   alt={"alt"}
                   src={getImage(item)}
