@@ -7,7 +7,11 @@ import LocationCard from "./_components/location-card";
 import PriceCard from "./_components/price-card";
 import { redirect } from "next/navigation";
 
-const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
+interface ProductDetailsPageProps {
+  params: Promise<{ id: string }>;
+}
+
+const ProductDetailsPage = async ({ params }: ProductDetailsPageProps) => {
   const { id } = await params;
   const currentAd = await prisma.ad.findUnique({
     where: {
