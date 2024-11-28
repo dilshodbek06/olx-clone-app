@@ -47,8 +47,9 @@ const ProductCard = ({
       }
       router.refresh();
       setLikedLoading(false);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      toast.error("Something went wrong", error!);
+      toast.error("Please sign in to your account.");
       setLikedLoading(false);
     }
   };

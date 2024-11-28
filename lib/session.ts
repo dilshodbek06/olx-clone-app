@@ -60,8 +60,18 @@ export async function verifySession() {
   }
   return { userId: session?.userId };
 }
+export async function verifySessionUserId() {
+  const newCookie: string | Uint8Array | undefined = (await cookies()).get(
+    cookie?.name
+  )?.value;
+  const session = await decrypt(newCookie!);
+  if (!session?.userId) {
+    return { userId: null };
+  }
+  return { userId: session?.userId };
+}
 
 export async function deleteSession() {
-  (await cookies()).delete(cookie.name);
-  redirect("/sign-in");
+  const cookieStore = await cookies();
+  cookieStore.delete("session");
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { formatDate, getImage } from "@/helpers";
+import { formatDate, formatPhoneNumber, getImage } from "@/helpers";
 import { Phone } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -61,7 +61,7 @@ const ContactCard = ({
           <div className="flex items-center gap-x-2">
             <Phone className="size-5 text-white" />
             {show ? (
-              <p className="text-white">{phoneNumber}</p>
+              <p className="text-white">{formatPhoneNumber(phoneNumber)}</p>
             ) : (
               <p className="text-white">xxx xx xx</p>
             )}
@@ -69,7 +69,7 @@ const ContactCard = ({
           <Button
             onClick={() => setShow(!show)}
             variant="outline"
-            className="px-7 w-2/3 md:w-auto bg-transparent text-white"
+            className="px-2 w-1/3 md:w-auto bg-transparent text-white"
           >
             {show ? "Hide" : "Show"}
           </Button>

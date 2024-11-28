@@ -45,3 +45,20 @@ export const formatPrice = (price: number): string => formatter.format(price);
 export const getImage = (id: string): string => {
   return `https://ucarecdn.com/${id}/`;
 };
+
+export const formatPhoneNumber = (phone: string) => {
+  // Remove any non-numeric characters except the plus sign
+  const cleaned = phone.replace(/[^\d+]/g, "");
+
+  // Check if the phone number starts with the Uzbekistan country code (+998)
+  if (cleaned.startsWith("+998") && cleaned.length === 13) {
+    // Format the phone number
+    return `${cleaned.slice(0, 4)} ${cleaned.slice(4, 6)} ${cleaned.slice(
+      6,
+      9
+    )} ${cleaned.slice(9)}`;
+  } else {
+    // Return the phone number as is if it's not valid or not from Uzbekistan
+    return phone;
+  }
+};
